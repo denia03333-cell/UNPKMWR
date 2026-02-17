@@ -14,6 +14,53 @@ a:hover{color:var(--link-hover);text-decoration:underline}
 img{max-width:100%;height:auto}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 
+/* Disclaimer Popup Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    max-width: 500px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-top: 5px solid #d9534f; /* Red warning strip */
+    font-family: Arial, sans-serif;
+}
+.modal-title {
+    font-size: 24px;
+    color: #d9534f;
+    margin: 0 0 15px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.modal-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+.modal-btn {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.modal-btn:hover { background: #555; }
+    
 /* Top Banner */
 .top-bar-wrapper{background:#fff;border-bottom:1px solid #ddd;padding:5px 0}
 .top-bar{display:flex;justify-content:flex-end;font-size:12px;color:#666}
@@ -106,6 +153,20 @@ img{max-width:100%;height:auto}
 </head>
 <body>
 
+<div class="modal-overlay">
+    <div class="modal-content">
+        <h2 class="modal-title"> Disclaimer</h2>
+        <p class="modal-text">
+            <strong>This website is a fictional simulation.</strong><br><br>
+            The United Nations Peacekeeping Mission in Western Russia (UNPMWR) 
+            does not exist. All events, entities, and news articles described herein 
+            are entirely fictitious and created for roleplay purposes only. All this 
+            content has been made by Nicolo03 on JanitorAI
+        </p>
+        <button class="modal-btn js-close-modal">I Understand</button>
+    </div>
+</div>
+    
 <div class="top-bar-wrapper">
     <div class="container top-bar">
         <ul class="top-links">
@@ -273,4 +334,17 @@ img{max-width:100%;height:auto}
 </div>
 
 </body>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const closeBtn = document.querySelector('.js-close-modal');
+    const modal = document.querySelector('.modal-overlay');
+    
+    if (closeBtn && modal) {
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+    }
+});
+</script>
+
 </html>
